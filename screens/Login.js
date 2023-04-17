@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Button, Input, Text } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import styles from '../style/MainStyle'
+import { Button, Input, Text } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import styles from '../style/MainStyle';
+
 
 export default function Login({navigation}) {
 
@@ -12,35 +13,44 @@ export default function Login({navigation}) {
   const entrar = () => {
     navigation.reset({
         index: 0,
-        rotes: [{name: "Principal"}]
+        routes: [{name: "Principal"}]
     })
   }
 
   return (
-    <View style={[styles.container, specificStyles.specificContainer]}>
-      <Text>Olá mundo!</Text>
-      <Input placeholder = "Email" leftIcon={{ type: 'font-awesome', name: 'envelope'}} keyboardType="email-address" styles={styles} onChangeText={value => setEmail(value)}
-      />
-
-      <Input placeholder = "Senha" leftIcon={{ type: 'font-awesome', name: 'lock'}} keyboardType="email-address" styles={styles} onChangeText={value => setPassword(value)} secureTextEntry={true}
-      />
-
-      <Button icon={
-        <Icon name= "check" size={15} color="white"
+    <View style={[styles.container, specificStyle.specificContainer]}>
+      <Text h3>Entre no TemTudaki</Text>
+      <Input
+        placeholder="E-mail"
+        leftIcon={{ type: 'font-awesome', name: 'envelope' }}
+        onChangeText={value => setEmail(value)}
+        keyboardType="email-address"
         />
-      }
-
-      title="Entrar"
-      onPress={() => entrar()}
-
+      <Input
+        placeholder="Sua senha"
+        leftIcon={{ type: 'font-awesome', name: 'lock' }}
+        onChangeText={value => setPassword(value)}
+        secureTextEntry={true}
+        />
+      
+      <Button
+        icon={
+          <Icon
+            name="check"
+            size={15}
+            color="white"
+          />
+        }
+        title="Entrar"
+        onPress={() => entrar()}
       />
+
     </View>
   );
 }
 
-export const specificStyles = StyleSheet.create({
+const specificStyle = StyleSheet.create({
   specificContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   }
 })
-
